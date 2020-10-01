@@ -28,7 +28,7 @@ triple_n = doble_n + n
 print(n, doble_n, triple_n, sep='')  # мне показалось, что '3 6 9' не то же самое что '369', потому и добавил из
                                      # подсказки PyChar`a
 
-#Задание №3
+                                        #Задание №3
 tm = int(input('Введите вермя в секундах :'))
 hrs, mts, scnd = 0, 0, 0
 finish = False
