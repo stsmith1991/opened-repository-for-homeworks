@@ -12,19 +12,17 @@ print('пример', number_var, pi_var, complex_var)
 print(hat_values, inspection.values())
 
 # Задание 2
-result_list = list(input('Введите данные в количестве четырёх: '))
-part_1 = result_list[slice(0, 3, 1)]
-rev1 = part_1.reverse()
-part_2 = result_list[slice(2, 1, -1)]
-rev2 = part_2.reverse()
-print(result_list, 'Переворачиваем', part_1, part_2, sep='\n')
+result_list = list(map(int, input('Введите данные в количестве четырёх: ').split()))
+for i in range(1, len(result_list), 2):
+    result_list[i - 1], result_list[i] = result_list[i], result_list[i - 1]
+print(result_list)
 
 # Задание 3.1 (c помощью list)
 m = int(input('Введите порядковый номер месяца : '))
-while m not in range(1, 12):
+while m not in range(0, 13):
     print('Нет месяца с порядковым номером ', m)
     m = int(input('Введите порядковый номер месяца : '))
-t = list('')
+t = list('0')
 t.append('Январь')
 t.append('Февраль')
 t.append('Март')
@@ -38,41 +36,47 @@ t.append('Октябрь')
 t.append('Ноябрь')
 t.append('Декабрь')
 i = 'Не задал'
-if m in range(1, 2) or m == 12:
+if m in range(1, 3) or m == 12:
     i = 'Зима'
-elif m in range(3, 5):
+elif m in range(3, 6):
     i = 'Весна'
-elif m in range(6, 8):
+elif m in range(6, 9):
     i = 'Лето'
-elif m in range(9, 11):
+elif m in range(9, 13):
     i = 'Осень'
 print('Месяц ', t[m], 'соответствует времени года: ', i)
 
-# Задание 3.2 (c помощью dict)
-m = int(input('Введите порядковый номер месяца : '))
-while m not in range(1, 12):
-    print('Нет месяца с порядковым номером ', m)
-    m = int(input('Введите порядковый номер месяца : '))
-t = {'1': "Январь", '2': "Февраль", '3': "Март", '4': "Апрель", '5': "Май", '6': "Июнь", '7': "Июль", '8': "Август",
-     '9': "Сентябрь", '10': "Октябрь", '11': "Ноябрь", '12': "Декабрь"}
-for i in t:
-    if m in range(t[1], t[2]) or m == t[12]:
-        i = 'Зима'
-    elif m in range(t[3], t[5]):
-        i = 'Весна'
-    elif m in range(t[6], t[8]):
-        i = 'Лето'
-    elif m in range(t[9], t[11]):
-        i = 'Осень'
-print('Месяц ', t[m], 'соответствует времени года: ', i)
+# Задание 4.
+word = input('Введите слово(а) через пробел: ').split()
+for n, i in enumerate(word, 1):
+    print((n, i) if len(i) <= 10 else print(n, (i[:10])))
 
-# Задание 4 (Не получается)
-# words=list()
-# num=int()
-# while len(words)!=10:
-#    for num in "word":
-#        words[int(num)]=list(input('Введите слово'))
-#        num+=1
-# for int(x) in words:
-#    words[int(x)]=words[int(x)].splice[0,11]
-# for num in enumerate(words):                              Дальше по плану нумерация, но он вообще не нумерует
+# Задание 5.
+raiting = [9, 8, 7, 7, 7, 6, 5, 3, 3, 3, 2, 1]
+addition = int(input('Добавить ещё баллов:'))
+i = 0
+for new in raiting:
+    if addition <= new:
+        i += 1
+raiting.insert(i, float(addition))
+print(raiting)
+
+# Задание 6.
+items = []
+meta_dump = {'Название': '', 'Стоимость': '', 'Количество': '', 'ед.изм.': ''}
+review = {'Название': [], 'Цена': [], 'Количество': [], 'ед.измер.': []}
+count = 0
+while 'рак на горе не свиснет'.islower() == True:
+    if input('Нажмите Х для выхода ').upper() == 'X':
+        break
+    x_pressed = True
+    for meta in meta_dump.keys():
+        criteria = input(f'Введите значение назначаемого {meta}: ')
+        meta_dump[meta] = int(meta_dump) if (meta == 'Стоимость' or f == 'Количество') else criteria
+        review[meta].append(meta_dump[meta])
+    items.append((count, meta_dump))
+    print(f'\nТовары:\n{items}')
+    print(f'\nДанные по товарам\n {"*" * 30}')
+    for keys, values in review.items():
+        print(f'{key[:25] > 30}: {value}')
+    print("*" * 30)
