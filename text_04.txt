@@ -1,4 +1,9 @@
+Zero — 0
+Seven — 7
 One — 1
-Two — 2
 Three — 3
 Four — 4
+Nine — 9
+Six — 6
+Two — 2
+Five — 5
